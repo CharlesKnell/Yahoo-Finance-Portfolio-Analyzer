@@ -1,7 +1,7 @@
 ## Yahoo Finance Portfolio Analyzer
 ## A Program in Python
 
-#### The purpose of this program is to show you the annualized gain for all stocks in your portfolio which have been held for some minimum number of years.
+#### The purpose of this program is to show you the annualized gain for all stocks in your portfolio which have been held for a user specified minimum number of years.
 #### Stocks picked by the best stock pickers should be held a minimum of 5 years. I have personally found this to be an excellent investment strategy.
 #### To use this program, you must first enter your stock data into a Yahoo Finance Portfolio. A v2.0 portfolio is recommended.
 
@@ -10,7 +10,7 @@
 * Install using Setup-YF-Analyzer-x.x.x.exe
 * Start by clicking on the desktop icon titled "YF Analyzer x.x.x".
 
-## After Starting the Program
+## After Starting the Program (Windows)
 1. Change the path to the Edge browser path in the "Browser Path" field. 
 * In the "Type here to search" field (lower left hand corner of Windows), type "Edge". 
 * Right click on the best match and select "Open file location".
