@@ -1,5 +1,5 @@
-                    GNU GENERAL PUBLIC LICENSE
-                       Version 3, 29 June 2007
+# GNU GENERAL PUBLIC LICENSE  
+Version 3, 29 June 2007
 
  Copyright (C) 2007 Free Software Foundation, Inc. <https://fsf.org/>
  Everyone is permitted to copy and distribute verbatim copies
@@ -672,3 +672,13 @@ may consider it more useful to permit linking proprietary applications with
 the library.  If this is what you want to do, use the GNU Lesser General
 Public License instead of this License.  But first, please read
 <https://www.gnu.org/licenses/why-not-lgpl.html>.
+
+# Imported Package License Compliance
+
+The installation setup file, Setup-YF-Analyzer-X.X.X.exe, contains the following imported packages:
+
+PyGetWindow==0.0.9 --- BSD-3-Clause License --- 
+https://github.com/asweigart/PyGetWindow/blob/master/LICENSE.txt
+
+Send2Trash==1.8.0  --- BSD-3-Clause License --- 
+https://github.com/arsenetar/send2trash/blob/master/LICENSE
