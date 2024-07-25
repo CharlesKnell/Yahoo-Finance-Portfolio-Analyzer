@@ -1,4 +1,9 @@
-# tag=charlesknell
+# Copyright (c) 2024 Charles Knell - All Rights Reserved
+# This software is licensed under the GPL-3.0 licenses
+# See the LICENSE file in the GitHub repository at:
+# https://github.com/CharlesKnell/YF-Analyzer/blob/main/LICENSE-GPL-3.0.md
+# The imported package licenses are listed at:
+# https://github.com/CharlesKnell/YF-Analyzer/blob/main/LICENSE-imported-packages.md
 
 import tkinter as tk
 from tkinter import filedialog
