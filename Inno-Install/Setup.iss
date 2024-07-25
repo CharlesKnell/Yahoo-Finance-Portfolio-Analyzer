@@ -44,6 +44,9 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 [Files]
 Source: "C:\Users\charl\PYTHON\YF-Analyzer\dist\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\charl\PYTHON\YF-Analyzer\yfsp.ini"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\charl\PYTHON\YF-Analyzer\LICENSE-GPL-3.0.md"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\charl\PYTHON\YF-Analyzer\LICENSE-imported-packages.md"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\charl\PYTHON\YF-Analyzer\README.md"; DestDir: "{app}"; Flags: ignoreversion    
 Source: "C:\Users\charl\PYTHON\YF-Analyzer\Inno-Install\{#MyAppIcoName}" ; DestDir: "{app}"
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
