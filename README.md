@@ -2,11 +2,14 @@
 ## A Program in Python
 
 #### The purpose of this program is to show you the annualized gain for all stocks in your portfolio which have been held for a user specified minimum number of years.
-#### Stocks picked by the best stock pickers should be held a minimum of 5 years. I have personally found this to be an excellent investment strategy.
+#### Stocks picked by even the best stock pickers should be held a minimum of 5 years. I have personally found this to be an excellent investment strategy.
 #### To use this program, you must first enter your stock data into a Yahoo Finance Portfolio. A v2.0 portfolio is recommended.
 
-### A Windows setup file is located the Inno-Install folder.
+### Windows Setup
 
+* The setup file, Setup-YF-Analyzer-x.x.x.exe, is located in the Inno-Install folder.
+* Click on the download button.
+![Setup File Download Link Image](YF-setup-download.jpg)
 * Install using Setup-YF-Analyzer-x.x.x.exe
 * Start by clicking on the desktop icon titled "YF Analyzer x.x.x".
 
