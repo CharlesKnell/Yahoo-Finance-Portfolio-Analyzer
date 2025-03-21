@@ -15,7 +15,7 @@ import tkinter as tk
 from tkinter import messagebox
 
 
-def download_yfinance_portfolio(folder_path, browser, export_link):
+def prepare_downloads_folder(folder_path):
     # delete the quotes.csv and family files and download a quotes.csv file
     # folder_path = "C:\\Users\\charl\\Downloads\\"
     folder_path = folder_path + "\\"
@@ -30,38 +30,10 @@ def download_yfinance_portfolio(folder_path, browser, export_link):
             file_to_delete = folder_path + afile
             print("move to recycle bin:", file_to_delete)
             send2trash(file_to_delete)
-
-    # get a new quotes.csv or portfolio.csv file into the Downloads folder
-    try:
-        print("starting edge subprocess: " + str(datetime.datetime.now()))
-        subprocess.run([browser, export_link], timeout=5)
-        print("edge subprocess started:  " + str(datetime.datetime.now()))
-        seconds_of_delay = 6
-        time.sleep(seconds_of_delay)
-        print("download delay complete:  " + str(datetime.datetime.now()))
-        if os.path.exists(folder_path + "quotes.csv"):
-            return folder_path + "quotes.csv"
-        if os.path.exists(folder_path + "portfolio.csv"):
-            return folder_path + "portfolio.csv"
-        return "error"
-
-    except subprocess.TimeoutExpired:
-        # Create a Tkinter window
-        root = tk.Tk()
-        root.withdraw()  # Hide the main window
-        # Show an error message
-        messagebox.showerror("Error", "Using MS Edge,\nLogin to your Yahoo Account\nand try again.")
-        # Destroy the Tkinter window
-        root.destroy()
-        return "error"
+    time.sleep(2)  # 2 sec delay
 
 
-def collect(min_holding_years, folder_path, browser, exportlink):
-
-    filepath = download_yfinance_portfolio(folder_path, browser, exportlink)
-    if filepath == "error":
-        return ""
-
+def collect(min_holding_years, filepath):
     ctr = 0
     while True:
         if not os.path.exists(filepath):
@@ -77,7 +49,6 @@ def collect(min_holding_years, folder_path, browser, exportlink):
 
     lot_rows = []
     with open(filepath, "r") as csvfile:
-        print(filepath + " opened")
         csvreader = csv.reader(csvfile)
 
         # Skip header row (if any)

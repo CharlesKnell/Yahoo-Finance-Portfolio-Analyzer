@@ -7,6 +7,7 @@
 import tkinter as tk
 from tkinter import filedialog
 from yfsp_collect import collect
+from yfsp_collect import prepare_downloads_folder
 from send2trash import send2trash
 import os
 import webbrowser
@@ -56,35 +57,10 @@ def handle_change_downloads_folder_button_click():
     update_ini_file("download_folder", downloads_file_path)
 
 
-def handle_browser_button_click():
-    browser_file_path = filedialog.askopenfilename()
-    print("browser fullpathfilename", browser_file_path)
-    entry_browser.delete(0, tk.END)
-    entry_browser.insert(0, browser_file_path)
-    update_ini_file("browser_full_path_filename", entry_browser.get())
-    # entry_browser_filepath = entry_browser.get()
-
-
-def open_edge(browser):
-    url = "https://finance.yahoo.com"
-    browser_path = browser
-    webbrowser.register('edge', None, webbrowser.BackgroundBrowser(browser_path))
-    webbrowser.get('edge').open(url)
-
-
-def minimize_edge():
-    edge_windows = [w for w in gw.getWindowsWithTitle('Edge') if 'Edge' in w.title]
-    if edge_windows:
-        edge_windows[0].minimize()
-
-
 def handle_collect_button_click():
     min_holding_years = entry_min_holding_years.get()
-    folder_path = entry_download_folder.get()
-    browser = entry_browser.get()
-    export_link = entry_export_link.get()
-    open_edge(browser)
-    text_to_display = collect(min_holding_years, folder_path, browser, export_link)
+    folder_path = entry_download_folder.get() + "\\portfolio.csv"
+    text_to_display = collect(min_holding_years, folder_path)
     # clear output_text before inserting new text
     output_text.delete(1.0, tk.END)
     output_text.insert(tk.END, text_to_display)
@@ -92,12 +68,12 @@ def handle_collect_button_click():
     root.lift()
     root.attributes('-topmost', True)
     root.after_idle(root.attributes, '-topmost', False)
-    # minimize the edge window
-    minimize_edge()
 
 
-def handle_save_yf_export_link_button_click():
-    update_ini_file("export_download_link", entry_export_link.get())
+def handle_prepare_button_click():
+    folder_path = entry_download_folder.get()
+    prepare_downloads_folder(folder_path)
+    print("Downloads folder prepared")
 
 
 def save_min_holding_years_button_click():
@@ -105,19 +81,12 @@ def save_min_holding_years_button_click():
 
 
 root = tk.Tk()
-root.title("Yahoo Finance Stock Performance Analyzer 1.2.2")
+root.title("Yahoo Finance Stock Performance Analyzer 1.3.0")
 root.geometry("780x780")
-
-# Create some widgets to put in the grid
-label_browser = tk.Label(root, text="Browser Path")
-label_yfdl_link = tk.Label(root, text="Yahoo Finance Export Link")
-button_browser = tk.Button(root, text="Change Path to MS Edge Browser", command=handle_browser_button_click)
-button_yf_export_link = tk.Button(root, text="Save Yahoo Finance Export Link",
-                                  command=handle_save_yf_export_link_button_click)
 
 scrollbar = tk.Scrollbar(root)
 collect_button = tk.Button(root, text="Collect Data", command=handle_collect_button_click)
-
+prepare_button = tk.Button(root, text="Prepare Download Folder", command=handle_prepare_button_click)
 label_download_folder = tk.Label(root, text="Downloads Folder")
 button_download_folder = tk.Button(root, text="Change Path to Downloads Folder",
                                    command=handle_change_downloads_folder_button_click)
@@ -125,16 +94,6 @@ button_download_folder = tk.Button(root, text="Change Path to Downloads Folder",
 entry_download_folder = tk.Entry(root, width=120)
 entry_download_folder.delete(0, tk.END)
 entry_download_folder.insert(0, read_ini_file()[3])
-
-entry_browser = tk.Entry(root, width=120)
-entry_browser.delete(0, tk.END)
-entry_browser.insert(0, read_ini_file()[0])
-
-entry_export_link = tk.Entry(root, width=120)
-# change color to light grey
-# entry_export_link.config(fg="lightgrey")
-entry_export_link.delete(0, tk.END)
-entry_export_link.insert(0, read_ini_file()[1])
 
 button_min_holding_years = tk.Button(root, text="Save Min Holding Years",
                                      command=save_min_holding_years_button_click)
@@ -144,23 +103,13 @@ entry_min_holding_years.delete(0, tk.END)
 mhy = read_ini_file()[2]
 entry_min_holding_years.insert(0, mhy)
 
-label_collect_instructions1 = tk.Label(root, text="Using Microsoft Edge")
-label_collect_instructions2 = tk.Label(root, text="Login to Your Yahoo Account")
-label_collect_instructions3 = tk.Label(root, text="Before Collecting Data")
+label_instructions1 = tk.Label(root, text="1. Prepare Download Folder")
+label_instructions2 = tk.Label(root, text="2. Download Yahoo Finance Portfolio Manually")
+label_instructions3 = tk.Label(root, text="3. Collect Data")
 
 label_output_text1 = tk.Label(root, text="holding       annualized")
 label_output_text2 = tk.Label(root, text="stock                   value              years            gain")
 output_text = tk.Text(root, height=30, width=35)
-
-# Use the grid manager to place the widgets in the grid
-label_browser.grid(row=0, column=0, sticky="ws", padx=27, pady=5)
-
-entry_browser.grid(row=1, column=0, columnspan=3, padx=30)
-button_browser.grid(row=0, column=1, pady=5, sticky="w")
-
-label_yfdl_link.grid(row=2, column=0, sticky="sw", padx=27, pady=5)
-button_yf_export_link.grid(row=2, column=1, pady=5, columnspan=1, sticky="w")
-entry_export_link.grid(row=3, column=0, columnspan=3, padx=30)
 
 label_download_folder.grid(row=4, column=0, sticky="ws", padx=27, pady=5)
 button_download_folder.grid(row=4, column=1, sticky="w", pady=5)
@@ -174,11 +123,11 @@ label_output_text1.grid(row=8, column=1, sticky="nw", padx=143)
 label_output_text2.grid(row=9, column=1, sticky="nw")
 output_text.grid(row=10, column=1, sticky="nw")
 
-collect_button.grid(row=10, column=0, pady=90, columnspan=1, sticky="nw", padx=30)
-
-label_collect_instructions1.grid(row=10, column=0, columnspan=1, sticky="nw", padx=30, pady=20)
-label_collect_instructions2.grid(row=10, column=0, columnspan=1, sticky="nw", padx=30, pady=40)
-label_collect_instructions3.grid(row=10, column=0, columnspan=1, sticky="nw", padx=30, pady=60)
+label_instructions1.grid(row=10, column=0, columnspan=1, sticky="nw", padx=30, pady=20)
+prepare_button.grid(row=10, column=0,  columnspan=1, sticky="nw", padx=30, pady=45)
+label_instructions2.grid(row=10, column=0, columnspan=1, sticky="nw", padx=30, pady=80)
+label_instructions3.grid(row=10, column=0, columnspan=1, sticky="nw", padx=30, pady=110)
+collect_button.grid(row=10, column=0, columnspan=1, sticky="nw", padx=30, pady=135)
 
 scrollbar.grid(row=10, column=1, sticky="ens", padx=150, pady=5)
 output_text.config(yscrollcommand=scrollbar.set)
