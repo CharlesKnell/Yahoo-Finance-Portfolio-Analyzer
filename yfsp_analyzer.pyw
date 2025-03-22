@@ -37,15 +37,11 @@ def read_ini_file():
     with open("yfsp.ini", "r") as f:
         for line in f:
             items = line.split("==")
-            if items[0] == "browser_full_path_filename":
-                browser_full_path_file_filename = items[1].strip()
-            elif items[0] == "export_download_link":
-                export_download_link = items[1].strip()
-            elif items[0] == "min_holding_years":
+            if items[0] == "min_holding_years":
                 min_holding_years = items[1].strip()
             elif items[0] == "download_folder":
                 download_folder = items[1].strip()
-        ini_file_items = [browser_full_path_file_filename, export_download_link, min_holding_years, download_folder]
+        ini_file_items = [min_holding_years, download_folder]
     return ini_file_items
 
 
@@ -93,14 +89,14 @@ button_download_folder = tk.Button(root, text="Change Path to Downloads Folder",
 
 entry_download_folder = tk.Entry(root, width=120)
 entry_download_folder.delete(0, tk.END)
-entry_download_folder.insert(0, read_ini_file()[3])
+entry_download_folder.insert(0, read_ini_file()[1])
 
 button_min_holding_years = tk.Button(root, text="Save Min Holding Years",
                                      command=save_min_holding_years_button_click)
 label_min_holding_years = tk.Label(root, text="Min Holding Years")
 entry_min_holding_years = tk.Entry(root, width=3)
 entry_min_holding_years.delete(0, tk.END)
-mhy = read_ini_file()[2]
+mhy = read_ini_file()[0]
 entry_min_holding_years.insert(0, mhy)
 
 label_instructions1 = tk.Label(root, text="1. Prepare Download Folder")

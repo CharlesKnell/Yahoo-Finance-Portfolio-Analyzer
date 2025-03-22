@@ -2,10 +2,10 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "YF Analyzer"
-#define MyAppVersion "1.2.2"
+#define MyAppVersion "1.3.0"
 #define MyAppPublisher "Charles Knell"
 #define MyAppURL "http://charlesknell.net"
-#define MyAppExeName "yfsp_analyzer_1.2.2.exe"
+#define MyAppExeName "yfsp_analyzer_1.3.0.exe"
 #define MyAppAssocName MyAppName + " File"
 #define MyAppAssocExt ".exe"
 #define MyAppAssocKey StringChange(MyAppAssocName, " ", "") + MyAppAssocExt
@@ -29,8 +29,8 @@ DisableProgramGroupPage=yes
 ; Uncomment the following line to run in non administrative install mode (install for current user only.)
 PrivilegesRequired=lowest
 
-OutputDir=C:\Users\charl\PYTHON\YF-Analyzer\Inno-Install
-OutputBaseFilename=Setup-YF-Analyzer-1.2.2
+OutputDir=C:\Users\charl\OneDrive\Desktop\PYTHON\YF-Analyzer\Inno-Install
+OutputBaseFilename=Setup-YF-Analyzer-1.3.0
 Compression=lzma
 SolidCompression=yes
 WizardStyle=modern
@@ -42,11 +42,11 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"
 
 [Files]
-Source: "C:\Users\charl\PYTHON\YF-Analyzer\dist\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\charl\PYTHON\YF-Analyzer\yfsp.ini"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\charl\PYTHON\YF-Analyzer\LICENSE.md"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\charl\PYTHON\YF-Analyzer\README.md"; DestDir: "{app}"; Flags: ignoreversion    
-Source: "C:\Users\charl\PYTHON\YF-Analyzer\Inno-Install\{#MyAppIcoName}" ; DestDir: "{app}"
+Source: "C:\Users\charl\OneDrive\Desktop\PYTHON\YF-Analyzer\dist\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\charl\OneDrive\Desktop\PYTHON\YF-Analyzer\yfsp.ini"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\charl\OneDrive\Desktop\PYTHON\YF-Analyzer\LICENSE.md"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\charl\OneDrive\Desktop\PYTHON\YF-Analyzer\README.md"; DestDir: "{app}"; Flags: ignoreversion    
+Source: "C:\Users\charl\OneDrive\Desktop\PYTHON\YF-Analyzer\Inno-Install\{#MyAppIcoName}" ; DestDir: "{app}"
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Registry]
