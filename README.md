@@ -17,7 +17,7 @@
 1. Sign in to your yahoo finance portfolio (v2.0 is recommended) and navigate to the "Holdings Tab". 
 
 
-2. Note the location of the "Export Link" and save this window for later use.
+2. Note the location of the "Download Link" and save this window for later use.
 ![Export Link Image](YF-export-link.jpg)
 
 
