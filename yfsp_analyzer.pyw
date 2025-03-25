@@ -81,8 +81,8 @@ root.title("Yahoo Finance Stock Performance Analyzer 1.3.0")
 root.geometry("780x780")
 
 scrollbar = tk.Scrollbar(root)
-collect_button = tk.Button(root, text="3. Collect Data", command=handle_collect_button_click)
-prepare_button = tk.Button(root, text="1. Prepare Downloads Folder", command=handle_prepare_button_click)
+collect_button = tk.Button(root, text="Step 3. Collect Data", command=handle_collect_button_click)
+prepare_button = tk.Button(root, text="Step 1. Prepare Downloads Folder", command=handle_prepare_button_click)
 label_download_folder = tk.Label(root, text="Downloads Folder")
 button_download_folder = tk.Button(root, text="Change Path to Downloads Folder",
                                    command=handle_change_downloads_folder_button_click)
@@ -99,8 +99,8 @@ entry_min_holding_years.delete(0, tk.END)
 mhy = read_ini_file()[0]
 entry_min_holding_years.insert(0, mhy)
 
-label_instructions1 = tk.Label(root, text="2. Download Yahoo Finance Portfolio")
-label_instructions2 = tk.Label(root, text="    using the Yahoo Finance window")
+label_instructions1 = tk.Label(root, text="Step 2. Download Yahoo Finance Portfolio")
+label_instructions2 = tk.Label(root, text="             using the Yahoo Finance window")
 
 label_output_text1 = tk.Label(root, text="holding       annualized")
 label_output_text2 = tk.Label(root, text="stock                   value              years            gain")
