@@ -5,7 +5,7 @@
 #### Stocks picked by even the best stock pickers should be held a minimum of 5 years. I have personally found this to be an excellent investment strategy.
 #### To use this program, you must first enter your stock data into a Yahoo Finance Portfolio. A v2.0 portfolio is recommended. This is a Windows only program.
 
-### Windows Setup
+### Windows Setup 
 
 * The setup file zip file, Setup-YF-Analyzer-x.x.x.zip, is located in the "Inno-Install" folder.
 * Click on "Inno-Install" folder, then on the setup zip file, and then on the download button.
