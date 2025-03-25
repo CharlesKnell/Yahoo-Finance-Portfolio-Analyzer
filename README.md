@@ -7,10 +7,12 @@
 
 ### Windows Setup
 
-* The setup file, Setup-YF-Analyzer-x.x.x.exe, is located in the "Inno-Install" folder.
-* Click on "Inno-Install" folder, then on the setup file, and then on the download button.
+* The setup file zip file, Setup-YF-Analyzer-x.x.x.zip, is located in the "Inno-Install" folder.
+* Click on "Inno-Install" folder, then on the setup zip file, and then on the download button.
 ![Setup File Download Link Image](YF-setup-download.jpg)
-* Install using Setup-YF-Analyzer-x.x.x.exe
+* Extract the setup file .exe from Setup-YF-Analyzer-x.x.x.zip
+* The password to open this zip file is 12345678
+* Execute Setup-YF-Analyzer-x.x.x.exe to install the program.
 * Start the program by clicking on the desktop icon titled "YF Analyzer x.x.x".
 
 ## After Starting the Program (Windows)
