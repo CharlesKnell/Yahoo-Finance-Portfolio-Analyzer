@@ -52,9 +52,9 @@
 5. Perform the three steps on the "Yahoo Finance Analyzer" screen.
 
 
-6. In step 3, if the results window is blank, try the following:
+6. Using the "Yahoo Finance Analyzer" screen step 3, if the results window is blank, try the following:
      * Reduce the "Min Holding Years" to 0 to display the entire portfolio. You may not have held any stock for the "Minimum Holding Years".
 
 
-7. Once step 2 is completed, you may collect data again using a different number of "Min Holding Years".  
-     * In step 3, the data is being collected from the downloaded portfolio.
+7. Once the "Yahoo Finance Analyzer" screen step 2 is completed, you may collect data again using a different number of "Min Holding Years".  
+     * In the "Yahoo Finance Analyzer" screen step 3, the data is being collected from the downloaded portfolio.
