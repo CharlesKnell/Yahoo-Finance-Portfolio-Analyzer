@@ -3,25 +3,37 @@
 
 #### The purpose of this program is to show you the annualized gain for all stocks in your portfolio which have been held for a user specified minimum number of years.
 #### Stocks picked by even the best stock pickers should be held a minimum of 5 years. I have personally found this to be an excellent investment strategy.
-#### To use this program, you must first enter your stock data into a Yahoo Finance Portfolio. A v2.0 portfolio is recommended. 
-#### This is a Windows only program.
+#### To use this program, you must first enter your stock data into a Yahoo Finance Portfolio. A v2.0 portfolio is recommended.
 
-### Windows Setup 
+### Windows Setup (This is a Windows only program)
 
-* The setup file zip file, Setup-YF-Analyzer-x.x.x.zip, is located in the "Inno-Install" folder.
-* Click on "Inno-Install" folder dropdown carrot.
+1. The setup file zip file, Setup-YF-Analyzer-x.x.x.zip, is located in the "Inno-Install" folder and will be downloaded in the next steps.
+
+
+2. Click on "Inno-Install" folder dropdown carrot.
 ![Setup File Download Link Image](YF-setup-download-1.jpg)
-* Click on the setup zip file.
-![Setup File Download Link Image](YF-setup-download-2.jpg)
-* Click on the download link.
-![Setup File Download Link Image](YF-setup-download-3.jpg)
-* In your computer's Downloads folder, extract the setup file .exe from Setup-YF-Analyzer-x.x.x.zip
-* My Downloads folder is located at "C:\Users\charl\Downloads". Yours will be named with your username, instead of charl.
-* The password to open this zip file is 12345678
-* Execute Setup-YF-Analyzer-x.x.x.exe to install the program.
-* Start the program by clicking on the desktop icon titled "YF Analyzer x.x.x". Leave it running on your desktop for later use.
 
-## After Starting the Program (Windows)
+
+3. Click on the setup zip file.
+![Setup File Download Link Image](YF-setup-download-2.jpg)
+
+
+4. Click on the download link.
+![Setup File Download Link Image](YF-setup-download-3.jpg)
+
+   
+5. My Downloads folder is located at "C:\Users\charl\Downloads". Yours will be named with your username, instead of charl. 
+
+
+6. In your computer's Downloads folder, extract the setup file .exe from Setup-YF-Analyzer-x.x.x.zip. The password to open this zip file is 12345678
+
+
+7. Execute Setup-YF-Analyzer-x.x.x.exe to install the program.
+
+
+8. Start the program by clicking on the desktop icon titled "YF Analyzer x.x.x". Leave it running on your desktop for later use.
+
+## After Starting the Program
 1. Sign in to your yahoo finance portfolio (v2.0 is recommended) and navigate to the "Holdings Tab". 
 
 
