@@ -10,9 +10,9 @@ from yfsp_collect import collect
 from yfsp_collect import prepare_downloads_folder
 from send2trash import send2trash
 import os
-import webbrowser
-import pygetwindow as gw
+from display_data import display_data
 
+last_result = ""
 
 def update_ini_file(key, value):
     if os.path.exists("yfsp_new.ini"):
@@ -54,12 +54,16 @@ def handle_change_downloads_folder_button_click():
 
 
 def handle_collect_button_click():
+    global last_result # text to be displayed in tk window and used by display_data()
     min_holding_years = entry_min_holding_years.get()
     folder_path = entry_download_folder.get() + "\\portfolio.csv"
-    text_to_display = collect(min_holding_years, folder_path)
+    last_result = collect(min_holding_years, folder_path)
     # clear output_text before inserting new text
     output_text.delete(1.0, tk.END)
-    output_text.insert(tk.END, text_to_display)
+    output_text.insert(tk.END, last_result)
+
+    #display_data(output_text.get("1.0", "end-1c"))
+
     # lift root window to front
     root.lift()
     root.attributes('-topmost', True)
@@ -77,7 +81,7 @@ def save_min_holding_years_button_click():
 
 
 root = tk.Tk()
-root.title("Yahoo Finance Stock Performance Analyzer 1.3.0")
+root.title("Yahoo Finance Stock Performance Analyzer 2.0.0")
 root.geometry("780x780")
 
 scrollbar = tk.Scrollbar(root)
@@ -102,9 +106,9 @@ entry_min_holding_years.insert(0, mhy)
 label_instructions1 = tk.Label(root, text="Step 2. Download Yahoo Finance Portfolio")
 label_instructions2 = tk.Label(root, text="             using the Yahoo Finance window")
 
-label_output_text1 = tk.Label(root, text="holding       annualized")
-label_output_text2 = tk.Label(root, text="stock                   value              years            gain")
-output_text = tk.Text(root, height=30, width=35)
+label_output_text1 = tk.Label(root, text="holding      annualized    acct")
+label_output_text2 = tk.Label(root, text="stock                   value              years            gain           type")
+output_text = tk.Text(root, height=38, width=38)
 
 label_download_folder.grid(row=4, column=0, sticky="ws", padx=27, pady=5)
 button_download_folder.grid(row=4, column=1, sticky="w", pady=5)
@@ -128,3 +132,6 @@ output_text.config(yscrollcommand=scrollbar.set)
 scrollbar.config(command=output_text.yview)
 
 root.mainloop()
+
+if last_result:
+    display_data(last_result) # display the same data as in the tk window

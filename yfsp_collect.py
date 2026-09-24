@@ -9,6 +9,8 @@ import csv
 import datetime
 import os
 import time
+from html.parser import commentclose
+
 from send2trash import send2trash
 import subprocess
 import tkinter as tk
@@ -82,7 +84,7 @@ def collect(min_holding_years, filepath):
                 lotlist.append(lot)
         stock_dict[stock] = lotlist
 
-    # for each stock, for each lot, compute annualized gain; record stock_ann_gain_dict
+    # for each stock, for each lot, compute annualized gain; record stock_ann_gain_dict, taxable or ira
     stock_ann_gain_lol = []
     for stock in stock_dict:
         if not stock.startswith("$$"):
@@ -92,6 +94,11 @@ def collect(min_holding_years, filepath):
                 trade_date = lotlist[lotnum][8]
                 shares = float(lotlist[lotnum][10])
                 purchase_price = lotlist[lotnum][9]
+                comment = lotlist[lotnum][14]
+                if "IRA" in comment.upper():
+                    acnt_type = "IRA"
+                else:
+                    acnt_type = "TAX"
                 current_date_dto = datetime.datetime.now()
                 td_format_str = '%Y%m%d'
                 trade_date_dto = datetime.datetime.strptime(trade_date, td_format_str)
@@ -110,28 +117,33 @@ def collect(min_holding_years, filepath):
                 # print(f'{stock} {current_value:.2f} {holding_years:.2f} {annualized_gain_in_percent:.2f}')
 
                 if holding_years > float(min_holding_years):
-                    stock_ann_gain_lol.append([stock, current_value, holding_years, annualized_gain_in_percent])
+                    stock_ann_gain_lol.append([stock, current_value, holding_years, annualized_gain_in_percent, acnt_type])
 
     # output stock, value, years held, and annualized gain for stock held for more than the minimum holding years
     output_str = ""
     for list_of_data in stock_ann_gain_lol:
         ctr = 1
         for item in list_of_data:
-            if ctr == 1:
+            if ctr == 5:
+                output_str += "   " + item + "\n"
+                continue
+            if ctr == 1: # stock symbol
                 len_item = len(f'{item}')
                 rs_spacer = ""
                 for x in range(7 - len_item):
                     rs_spacer += " "
-                # print(f'{item}', rs_spacer, end='')
+                #print(f'{item}', rs_spacer, end='')
                 output_str += f'{item}' + rs_spacer
             else:
                 item_str = f'{item:.2f}'
                 len_item = len(item_str)
 
-                if ctr == 2:
+                if ctr == 2: # Lot Value
                     ls_spacer = ""
                     for y in range(9 - len_item):
                         ls_spacer += " "
+                    item_str = f'{item:.2f}'
+                    # print(item_str, ls_spacer, end='')
                     output_str += ls_spacer + item_str
 
                 if ctr == 3:
@@ -143,7 +155,10 @@ def collect(min_holding_years, filepath):
                     ls_spacer = ""
                     for x in range(8 - len_item):
                         ls_spacer += " "
-                    output_str += ls_spacer + item_str + "\n"
+                    output_str += ls_spacer + item_str
+
+
+
             ctr += 1
 
     return output_str
