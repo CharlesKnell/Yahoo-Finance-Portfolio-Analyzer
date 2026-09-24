@@ -132,7 +132,6 @@ def collect(min_holding_years, filepath):
                 rs_spacer = ""
                 for x in range(7 - len_item):
                     rs_spacer += " "
-                #print(f'{item}', rs_spacer, end='')
                 output_str += f'{item}' + rs_spacer
             else:
                 item_str = f'{item:.2f}'
@@ -143,21 +142,19 @@ def collect(min_holding_years, filepath):
                     for y in range(9 - len_item):
                         ls_spacer += " "
                     item_str = f'{item:.2f}'
-                    # print(item_str, ls_spacer, end='')
                     output_str += ls_spacer + item_str
 
-                if ctr == 3:
+                if ctr == 3: # Holding Years
                     ls_spacer = ""
                     for x in range(7 - len_item):
                         ls_spacer += " "
                     output_str += ls_spacer + item_str
-                if ctr == 4:
+
+                if ctr == 4: # Annualized Gain
                     ls_spacer = ""
                     for x in range(8 - len_item):
                         ls_spacer += " "
                     output_str += ls_spacer + item_str
-
-
 
             ctr += 1
 
