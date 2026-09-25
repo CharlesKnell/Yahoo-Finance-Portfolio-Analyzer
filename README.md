@@ -3,11 +3,11 @@
 
 #### The purpose of this program is to show you the annualized gain for all stocks in your portfolio which have been held for a user specified minimum number of years.
 #### Stocks picked by even the best stock pickers should be held a minimum of 5 years. I have personally found this to be an excellent investment strategy.
-#### To use this program, you must first enter your stock data into a Yahoo Finance Portfolio. A v2.0 portfolio is recommended.
+#### To use this program, you must first enter your stock data into a Yahoo Finance Portfolio. A v2.0 Yahoo Finance portfolio is required.
 
 ### Windows Setup (This is a Windows only program)
 
-1. The setup file zip file, Setup-YF-Analyzer-x.x.x.zip, is located in the "Inno-Install" folder and will be downloaded in the next steps.
+1. The setup file zip file, Setup-YF-Analyzer-x.x.x.zip, is located in this repository's "Inno-Install" folder and will be downloaded in the next steps.
 
 
 2. Click on "Inno-Install" folder dropdown carrot.
@@ -22,30 +22,31 @@
 ![Setup File Download Link Image](YF-setup-download-3.jpg)
 
    
-5. My Downloads folder is located at "C:\Users\charl\Downloads". Yours will be named with your username, instead of charl. 
+5. My Downloads folder is located at "C:\Users\charl\Downloads". Your Downloads folder will be named with your username, instead of charl. 
 
 
-6. In your computer's Downloads folder, extract the setup file .exe from Setup-YF-Analyzer-x.x.x.zip. The password to open this zip file is 12345678
+6. In your computer's Downloads folder, using WinZip, extract the setup file .exe from Setup-YF-Analyzer-x.x.x.zip. The password to open this zip file is 12345678
 
 
-7. Execute Setup-YF-Analyzer-x.x.x.exe to install the program.
+7. Execute Setup-YF-Analyzer-x.x.x.exe to install the program on your Windows PC.
 
 
 8. Start the program by clicking on the desktop icon titled "YF Analyzer x.x.x". Leave it running on your desktop for later use.
 
 ## After Starting the Program
-1. Sign in to your yahoo finance portfolio (v2.0 is recommended) and navigate to the "Holdings Tab". 
+1. Make adjustments in your personal Downloads folder by clicking on the Step 1 button. This removes any previously downloaded files from Yahoo Finance.
 
+2. Sign in to your yahoo finance portfolio (v2.0 is required), use the "My Portfolio" link to select your v2.0 portfolio, and navigate to the "Holdings Tab". 
 
-2. Note the location of the "Download Link" and save this window for later use.
+3. Note the location of the "Download Link" and save this window for later use.
 ![Export Link Image](YF-export-link.jpg)
 
-
-3. On the "Yahoo Finance Analyzer" screen, click on the program's "Change Path to Downloads Folder" button to save the path to your "Downloads" folder.
+4. On the "Yahoo Finance Analyzer" screen, click on the program's "Change Path to Downloads Folder" button to save the path to your "Downloads" folder.
    * Navigate to and select your personal "Downloads" folder in the "C:\\Users\\(your-username)" folder.
    
 
-4. Set and save the program's "Minimum Holding Years" field for your analysis.
+
+6. Set and save the program's "Minimum Holding Years" field for your analysis.
    * Fill in the field and click the "Save Min Holding Years" button.
 
 
@@ -58,3 +59,6 @@
 
 7. Once the "Yahoo Finance Analyzer" screen step 2 is completed, you may collect data again using a different number of "Min Holding Years".  
      * In the "Yahoo Finance Analyzer" screen step 3, the data is being collected from the downloaded portfolio.
+
+8. When you close the application, an Excel window will open with the collected data. One can then analyze it further if desired. I generally sort the data by annualized gain to decide which equities should be traded for better choices. 
+

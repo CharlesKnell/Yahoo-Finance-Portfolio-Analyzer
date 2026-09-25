@@ -107,10 +107,10 @@ def display_data(data,
         sys.exit(1)
 
 
-if __name__ == "__main__":
-    sample = """
-AAPL   15230.500  3.2   12.4  IRA
-MSFT   8420.00   1.5   18.9  Taxable
-VTI    22100.75  6.0   9.7   Roth IRA
-"""
-    display_data(sample)
+# if __name__ == "__main__":
+#    sample = """
+# AAPL   15230.500  3.2   12.4  IRA
+# MSFT   8420.00   1.5   18.9  Taxable
+# VTI    22100.75  6.0   9.7   Roth IRA
+# """
+#     display_data(sample)
