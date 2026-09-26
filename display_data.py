@@ -1,8 +1,19 @@
 import csv, os, sys, ctypes, traceback
 import pywintypes
 import win32com.client as win32   # pip install pywin32
+import win32gui, win32con, win32api
 
 XL_OPENXML_WORKBOOK = 51  # xlOpenXMLWorkbook -> .xlsx
+
+def bring_to_front(hwnd):
+    """Restore the window if minimized, then make it the foreground window."""
+    if win32gui.IsIconic(hwnd):
+        win32gui.ShowWindow(hwnd, win32con.SW_RESTORE)
+    # Tapping Alt gets around Windows' foreground lock, which otherwise
+    # sometimes just flashes the taskbar button instead of switching windows
+    win32api.keybd_event(win32con.VK_MENU, 0, 0, 0)
+    win32gui.SetForegroundWindow(hwnd)
+    win32api.keybd_event(win32con.VK_MENU, 0, win32con.KEYEVENTF_KEYUP, 0)
 
 
 def error_window(message, title="Error"):
@@ -95,6 +106,12 @@ def display_data(data,
             wb.SaveAs(xlsx_path, FileFormat=XL_OPENXML_WORKBOOK)
         finally:
             excel.DisplayAlerts = True
+        # Bring Excel (showing the new workbook) in front of the Tk window
+        wb.Activate()
+        try:
+            bring_to_front(excel.Hwnd)
+        except pywintypes.error:
+            pass  # not being able to raise the window shouldn't count as an error
 
     except Exception as e:
         detail = traceback.format_exc()

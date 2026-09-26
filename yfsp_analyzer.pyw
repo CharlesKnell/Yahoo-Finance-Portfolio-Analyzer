@@ -62,13 +62,6 @@ def handle_collect_button_click():
     output_text.delete(1.0, tk.END)
     output_text.insert(tk.END, last_result)
 
-    #display_data(output_text.get("1.0", "end-1c"))
-
-    # lift root window to front
-    root.lift()
-    root.attributes('-topmost', True)
-    root.after_idle(root.attributes, '-topmost', False)
-
 
 def handle_prepare_button_click():
     folder_path = entry_download_folder.get()
@@ -79,13 +72,18 @@ def handle_prepare_button_click():
 def save_min_holding_years_button_click():
     update_ini_file("min_holding_years", entry_min_holding_years.get())
 
+def handle_transfer_to_excel_button_click():
+    if last_result:
+        display_data(last_result)  # display the same data as in the tk window
+
 
 root = tk.Tk()
-root.title("Yahoo Finance Stock Performance Analyzer 2.0.0")
+root.title("Yahoo Finance Stock Performance Analyzer 2.1.0")
 root.geometry("780x780")
 
 scrollbar = tk.Scrollbar(root)
 collect_button = tk.Button(root, text="Step 3. Collect Data", command=handle_collect_button_click)
+transfer_to_Excel_button = tk.Button(root, text="Step 4. Transfer Data to Excel", command=handle_transfer_to_excel_button_click)
 prepare_button = tk.Button(root, text="Step 1. Prepare Downloads Folder", command=handle_prepare_button_click)
 label_download_folder = tk.Label(root, text="Downloads Folder")
 button_download_folder = tk.Button(root, text="Change Path to Downloads Folder",
@@ -126,6 +124,7 @@ prepare_button.grid(row=10, column=0,  columnspan=1, sticky="nw", padx=30, pady=
 label_instructions1.grid(row=10, column=0, columnspan=1, sticky="nw", padx=30, pady=80)
 label_instructions2.grid(row=10, column=0, columnspan=1, sticky="nw", padx=30, pady=100)
 collect_button.grid(row=10, column=0, columnspan=1, sticky="nw", padx=30, pady=125)
+transfer_to_Excel_button.grid(row=10, column=0, columnspan=1, sticky="nw", padx=30, pady=160)
 
 scrollbar.grid(row=10, column=1, sticky="ens", padx=150, pady=5)
 output_text.config(yscrollcommand=scrollbar.set)
@@ -133,5 +132,3 @@ scrollbar.config(command=output_text.yview)
 
 root.mainloop()
 
-if last_result:
-    display_data(last_result) # display the same data as in the tk window
